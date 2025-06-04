@@ -7,7 +7,7 @@ editor: visual
 
 ## Introdução
 
-A série analisada corresponde à **Taxa de Variação Real do PIB da Indústria** no Brasil, disponível no sistema SGS do Banco Central com o código **7328**.
+A série analisada é a **Taxa de Variação Real do PIB da Indústria** (código **7328** do Sistema Gerenciador de Séries Temporais – SGS do Banco Central).
 
 ## Importância da Variável
 
