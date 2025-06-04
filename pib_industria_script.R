@@ -1,9 +1,14 @@
 # Script para baixar e animar a série do PIB - Indústria (código 7328)
-# Pacotes necessários: GetBCBData, tidyverse e gganimate
+# Pacotes necessários: GetBCBData, tidyverse, gganimate e ragg
 
 library(GetBCBData)
 library(tidyverse)
 library(gganimate)
+library(gifski)
+library(ragg)
+
+# garante que o dispositivo PNG funcione em ambientes sem interface gráfica
+options(bitmapType = "cairo")
 
 # Código da série no SGS
 my.id <- c(pib_industria = 7328)
@@ -33,5 +38,11 @@ p <- ggplot(series_pib, aes(x = ref.date, y = value)) +
 
 anim <- p + transition_reveal(ref.date)
 
-animate(anim, fps = 10, width = 800, height = 400,
-        renderer = gifski_renderer('pib_industria.gif'))  # salva GIF
+animate(
+  anim,
+  fps = 10,
+  width = 800,
+  height = 400,
+  renderer = gifski_renderer("pib_industria.gif"),
+  device = agg_png
+)  # salva GIF
